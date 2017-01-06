@@ -1,11 +1,14 @@
-stage = argument0;
-horizMax = argument1;
-fwdMax = argument2;
+/***********************/
+stage = argument0;      
+horizMax = argument1;   
+fwdMax = argument2;     
+/***********************/
+
 fwdFree = true;
 backFree = true;
 leftFree = true;
 rightFree = true;
- 
+
 //obstacle checking
  if instance_exists(obstruct)
  {
@@ -51,42 +54,49 @@ rightFree = true;
    }
  }
  //movement
+ if locked == false and special == false{
  if (keyboard_check_pressed(ord('W')) == true and fwdMax > fwd and fwdFree == true)
- {  
+  {  
     fwd++;
+    obj_tester.scale *= 0.85;
     x = path_get_point_x(stage.column[horiz], fwd);
     y = path_get_point_y(stage.column[horiz], fwd);
-    image_xscale *= 0.85;
-    image_yscale  *= 0.85;
+    image_xscale = obj_tester.scale;
+    image_yscale = obj_tester.scale;
     depth+=2;
     
- }
+  }
  
   if (keyboard_check_pressed(ord('S')) == true and fwd > 0 and backFree == true)
- {
+  {
     fwd--;
+    obj_tester.scale /= 0.85
     x = path_get_point_x(stage.column[horiz], fwd);
     y = path_get_point_y(stage.column[horiz], fwd);
-    image_xscale /= 0.85;
-    image_yscale  /= 0.85;
+    image_xscale = obj_tester.scale;
+    image_yscale = obj_tester.scale;
     depth-=2;
     
- }
+  }
  
    if (keyboard_check_pressed(ord('A')) == true and horiz > 0 and leftFree == true)
- {
+  {
     sprite_index = sprLeft;
     horiz--;
     x = path_get_point_x(stage.column[horiz], fwd);
     y = path_get_point_y(stage.column[horiz], fwd);
-    
- }
+    left = true;
+    right = false;
+  }
  
    if (keyboard_check_pressed(ord('D')) == true and horiz < horizMax and rightFree == true)
- {
+  {
     sprite_index = sprRight;
     horiz++;
     x = path_get_point_x(stage.column[horiz], fwd);
     y = path_get_point_y(stage.column[horiz], fwd);
+    right = true;
+    left = false;
     
+  }
  }

@@ -112,7 +112,7 @@ if scaled == false
  adjustedScaleY = power(0.85, fwd);
  image_xscale = adjustedScaleX;
  image_yscale = adjustedScaleY;
- depth = 2+(2*fwd);
+ depth = 1+(2*fwd);
  scaled = true;
 }
 //if blink == true;
@@ -137,7 +137,7 @@ if (hp &lt; 25)
 
 //defeat 
 if hp &lt;= 0
- image_alpha -= .02;
+ { image_alpha -= .02; obj_tester.locked = false; }
 
 if image_alpha &lt;= 0
  instance_destroy();
@@ -166,19 +166,29 @@ if (hp &lt;= 0 and !audio_is_playing(choose(defeat0, defeat1)))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = true;
-
-if adjacent == true and obj_tester.ranNum == 0
+            <string>if adjacent == true and obj_tester.ranNum == 0
 {
+ obj_tester.locked = true;
+ objTarget.visible = true;
  dong.visible = true;
  obj_tester.myTarget = id;
  
- if (left == true and obj_tester.horiz &gt; horiz)
-  {image_xscale *= -1; right = true; left = false;}
-  
-   if (right == true and obj_tester.horiz &lt; horiz)
-  {image_xscale *= -1; left = true; right = false;}
- 
+ if (obj_tester.horiz &gt; horiz)
+ {
+  obj_tester.left = true; obj_tester.right = false;
+  if (left == true)
+  {
+   image_xscale *= -1; right = true; left = false; 
+  }
+ }
+ if (obj_tester.horiz &lt; horiz) 
+ {
+  obj_tester.left = false; obj_tester.right = true;
+  if (right == true)
+  {
+   image_xscale *= -1; left = true; right = false;
+  }
+ }
  obj_tester.ranNum = irandom_range(1, 4);
  obj_tester.storedRan = obj_tester.ranNum;
 }

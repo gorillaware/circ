@@ -1,3 +1,5 @@
+//stage = room_get_name(room);
+
 c = argument0;
 r = argument1;
 

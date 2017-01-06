@@ -33,7 +33,7 @@ column[2] = L2S1P2;
 column[3] = L2S1P3;
 column[4] = L2S1P4;
 column[5] = L2S1P5;
-column[6] = L2S1P5;
+column[6] = L2S1P6;
 
 scrObstruct(1, 4); addTarget(1, 4);
 scrObstruct(5, 4); addTarget(5, 4);
@@ -64,6 +64,17 @@ scrPlayer(0, 0);
           <argument>
             <kind>1</kind>
             <string>selectStage();
+
+with (obj_tester)
+{
+
+ x = path_get_point_x(g2_1.column[horiz], fwd);
+ y = path_get_point_y(g2_1.column[horiz], fwd);
+ scrMvCol(g2_1, 6, 5);
+}
+
+if (instance_number(objTarget) == 0)
+ room_goto_next();
 </string>
           </argument>
         </arguments>

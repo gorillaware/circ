@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="objLivingRoom" x="0" y="0" name="inst_CBD27D65" locked="0" code="" scaleX="0.75" scaleY="0.75" colour="4294967295" rotation="0"/>
-    <instance objName="objGuy" x="320" y="1600" name="inst_ED5A668B" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objGuy" x="343" y="821" name="inst_ED5A668B" locked="0" code="" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objSkip" x="800" y="640" name="inst_8D85F827" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

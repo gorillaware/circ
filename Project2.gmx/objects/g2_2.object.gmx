@@ -39,6 +39,8 @@ scrObstructR(1, 4); addTargetR(1, 4);
 scrObstructR(5, 4); addTargetR(5, 4);
 scrObstructR(1, 0); addTargetR(1, 0);
 scrObstructR(5, 0); addTargetR(5, 0);
+
+scrPlayer(0, 0);
 </string>
           </argument>
         </arguments>
@@ -61,8 +63,18 @@ scrObstructR(5, 0); addTargetR(5, 0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>stage=self;
-selectStage();
+            <string>selectStage();
+
+with (obj_tester)
+{
+
+ x = path_get_point_x(g2_2.row[fwd], horiz);
+ y = path_get_point_y(g2_2.row[fwd], horiz);
+ scrMvRow(g2_2, 6, 5);
+}
+
+if (instance_number(objTarget) == 0)
+ room_goto_next();
 </string>
           </argument>
         </arguments>

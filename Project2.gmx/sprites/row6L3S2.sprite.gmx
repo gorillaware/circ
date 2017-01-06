@@ -7,18 +7,18 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>14</bbox_left>
-  <bbox_right>120</bbox_right>
-  <bbox_top>11</bbox_top>
-  <bbox_bottom>43</bbox_bottom>
+  <bbox_left>9</bbox_left>
+  <bbox_right>86</bbox_right>
+  <bbox_top>15</bbox_top>
+  <bbox_bottom>54</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>136</width>
-  <height>52</height>
+  <width>104</width>
+  <height>76</height>
   <frames>
     <frame index="0">images\row6L3S2_0.png</frame>
   </frames>

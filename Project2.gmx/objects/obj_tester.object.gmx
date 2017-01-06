@@ -26,18 +26,27 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.1;
-fwd = 0;
-horiz = 2;
+fwd = 0; horiz = 2;
 touches = 0;
 adjacentTar = false;
-ranNum = 0;
-storedRan = 0;
+ranNum = 0; storedRan = 0;
 var myTarget;
-impact = 1;
+impact = 1; special = false; buffered = false;
+left = false; right = true;
+scale = 0.6;
+locked = false;
 
-slash[0] = slash0;
+slash[0] = slash0; 
 slash[1] = slash1;
 slash[2] = slash2;
+
+swipeL[0] = swLeft0; ghostL[0] = gLeft0;
+swipeL[1] = swLeft1; ghostL[1] = gLeft1;
+swipeL[2] = swLeft2; ghostL[2] = gLeft2;
+
+swipeR[0] = swRight0; ghostR[0] = gRight0;
+swipeR[1] = swRight1; ghostR[1] = gRight1;
+swipeR[2] = swRight2; ghostR[2] = gRight2;
 </string>
           </argument>
         </arguments>
@@ -60,7 +69,23 @@ slash[2] = slash2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if mouse_check_button(mb_left)
+            <string>if special == false
+{
+ if right == true
+  sprite_index = sprRight;
+ if left == true
+  sprite_index = sprLeft;
+}
+
+if special == true and room != rmMenu
+{
+ if buffered == false
+ { swipeBuffer(); buffered = true; }
+ 
+ scrHorizonStrike();
+ scrStrikesNum();
+}
+if mouse_check_button(mb_left)
   instance_create(mouse_x, mouse_y, objStar);
  
 if mouse_check_button_pressed(mb_right)
@@ -75,11 +100,10 @@ if touches &gt;= instance_number(objSpot)
  { 
   inflictDamage();
   with((myTarget))
-  {
-    scream();
+  { 
+   scream(); 
   }
- }
- 
+ } 
  
  touches = 0;
 }
@@ -101,9 +125,6 @@ else if (os_type == os_windows)
 
 if ((dx &lt; 0 || dx &gt; window_get_width()) || (dy &lt; 0 || dy &gt; window_get_height()))
 {
-     //if (panning)
-        //event_perform(ev_mouse,ev_global_middle_release);
-
      mouse_clear(mb_any);
 }
 </string>
@@ -131,6 +152,55 @@ if ((dx &lt; 0 || dx &gt; window_get_width()) || (dy &lt; 0 || dy &gt; window_ge
             <string>draw_text(x,y,horiz);
 draw_text(69, 69, instance_count);
 draw_text(x-16, y-16, fwd);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_restart();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if locked == true and (instance_exists(objTarget))
+{
+ special = true;
+}
 </string>
           </argument>
         </arguments>

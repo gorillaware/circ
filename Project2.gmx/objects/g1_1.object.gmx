@@ -26,14 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>//window_set_size(800, 600);
-
+stage = g1_1;
 column[0] = L1S1P0;
 column[1] = L1S1P1;
 column[2] = L1S1P2;
 column[3] = L1S1P3;
 column[4] = L1S1P4;
 
-stage=self;
+
 scrObstruct(2, 2); addTarget(2, 2);
 
 scrPlayer(0, 0);
@@ -71,17 +71,24 @@ if bgm == true and audio_is_paused(snPositive)
 
 with (obj_tester)
 {
- x = path_get_point_x(g1_1.column[horiz], fwd);
- y = path_get_point_y(g1_1.column[horiz], fwd);
- scrMvCol(g1_1, 4, 4);
+ if special == false
+ {
+  x = path_get_point_x(g1_1.column[horiz], fwd);
+  y = path_get_point_y(g1_1.column[horiz], fwd);
+  scrMvCol(g1_1, 4, 4);
+ }
 }
+
+
 
 with (objTarget)
 {
  if (hp &lt; maxHp) and instance_exists(g1_1)
   g1_1.bgm = true;
 }
-
+if (instance_number(objTarget) == 0)
+ room_goto_next();
+ 
 selectStage();
 </string>
           </argument>

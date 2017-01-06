@@ -71,7 +71,7 @@ scrObstruct(4, 3); addTarget(4, 3);
 {
  x = path_get_point_x(g3_2.column[horiz], fwd);
  y = path_get_point_y(g3_2.column[horiz], fwd);
- scrMvCol(g3_2, 5, 8);
+ scrMvCol(g3_2, 5, 9);
 }
 selectStage();
 </string>
