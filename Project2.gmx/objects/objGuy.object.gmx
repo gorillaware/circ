@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(snPositive, 4, true);
-talkTimer = (60*3)
+talkDelay = (60*3)
 </string>
           </argument>
         </arguments>
@@ -72,23 +72,52 @@ talkTimer = (60*3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>talkTimer -= 1;
+            <string>talkDelay -= 1;
 
 if (y &gt;= room_height/2-room_height/4)
  vspeed -= .01;
 else 
  vspeed = 0;
 
-audio_sound_gain(snPositive, 0.1, 0);
+if !audio_is_playing(snTalk)
+ audio_sound_gain(snPositive, 0.3, 0);
+else 
+ audio_sound_gain(snPositive, 0.2, 0);
 
-//timer set to the length of intro dialog audio
+//alarm set to the length of intro dialog audio
 //moves to next stage on completion
-if (talkTimer &lt;= 0 and !audio_is_playing(snTalk))
+if (talkDelay &lt;= 0 and !audio_is_playing(snTalk))
 {
  audio_play_sound(snTalk, 2, false);
+ audio_sound_gain(snTalk, 1.2, 0);
  len = audio_sound_length(snTalk);
  alarm[0] = len*room_speed;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+draw_text(0, 0, string(audio_sound_get_gain(snPositive)))
+draw_text(0, 10, string(alarm[0]))
 </string>
           </argument>
         </arguments>

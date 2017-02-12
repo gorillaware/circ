@@ -22,7 +22,9 @@
       <filename>SERIFE.FON</filename>
     </datafile>
   </datafiles>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\Simple Fullscreen Shaders</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sounds name="screams">
       <sound>sound\sc1</sound>
@@ -38,6 +40,9 @@
       <sound>sound\slash0</sound>
       <sound>sound\slash1</sound>
       <sound>sound\slash2</sound>
+      <sound>sound\smack0</sound>
+      <sound>sound\smack1</sound>
+      <sound>sound\smack2</sound>
     </sounds>
     <sound>sound\snPositive</sound>
     <sound>sound\snTalk</sound>
@@ -172,6 +177,14 @@
         <sprite>sprites\down</sprite>
         <sprite>sprites\sprSwipe</sprite>
       </sprites>
+      <sprite>sprites\sprSpark</sprite>
+      <sprite>sprites\sprBlack</sprite>
+      <sprites name="shader">
+        <sprites name="lighting">
+          <sprite>sprites\s_gui</sprite>
+          <sprite>sprites\s_player</sprite>
+        </sprites>
+      </sprites>
     </sprites>
     <sprite>sprites\sprLivingRoom</sprite>
     <sprite>sprites\sprSound</sprite>
@@ -183,8 +196,7 @@
       <sprite>sprites\spr3_1</sprite>
       <sprite>sprites\spr3_2</sprite>
     </sprites>
-    <sprite>sprites\sprite104</sprite>
-    <sprite>sprites\sprite105</sprite>
+    <sprite>sprites\sprPenta</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -261,10 +273,27 @@
       <script>scripts\saveData.gml</script>
       <script>scripts\loadData.gml</script>
     </scripts>
+    <script>scripts\script21.gml</script>
   </scripts>
+  <shaders name="shaders">
+    <shaders name="brightness">
+      <shader type="GLSLES">shaders\sh_saturation.shader</shader>
+    </shaders>
+    <shaders name="colourShift">
+      <shader type="GLSLES">shaders\BlackAndWhite.shader</shader>
+      <shader type="GLSLES">shaders\ColourDistortion.shader</shader>
+      <shader type="GLSLES">shaders\EdgeDetection.shader</shader>
+      <shader type="GLSLES">shaders\FishEye.shader</shader>
+      <shader type="GLSLES">shaders\InvertColours.shader</shader>
+      <shader type="GLSLES">shaders\OuterBlur.shader</shader>
+      <shader type="GLSLES">shaders\Sepia.shader</shader>
+      <shader type="GLSLES">shaders\shader8.shader</shader>
+    </shaders>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\font2</font>
     <font>fonts\txtOCR</font>
+    <font>fonts\f_std</font>
   </fonts>
   <objects name="objects">
     <objects name="ScrappedOldProject">
@@ -362,6 +391,9 @@
         <object>objects\lvl3_2</object>
       </objects>
       <object>objects\objLivingRoom</object>
+      <objects name="backdrop">
+        <object>objects\bkPenta</object>
+      </objects>
     </objects>
     <objects name="characters">
       <objects name="dr">
@@ -386,10 +418,29 @@
       </objects>
       <object>objects\objStar</object>
       <object>objects\objSwipe</object>
+      <object>objects\objBlack</object>
+      <objects name="shaders">
+        <objects name="fullscreen">
+          <object>objects\drawManager</object>
+        </objects>
+        <objects name="lighting">
+          <object>objects\o_player</object>
+          <object>objects\o_objects</object>
+          <object>objects\o_controller</object>
+          <object>objects\o_background</object>
+          <object>objects\o_gui</object>
+          <object>objects\o_shader_end</object>
+          <object>objects\o_shader_start</object>
+        </objects>
+      </objects>
     </objects>
     <object>objects\objEgg</object>
     <object>objects\objTar</object>
+    <object>objects\object86</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\timeline0</timeline>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\rmMenu</room>
     <room>rooms\rmIntro</room>

@@ -48,15 +48,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (obj_tester.ranNum == 4)
+            <string>if obj_tester.special == false
 {
- for (i = 0; i &lt; instance_number(objY); i++)
-  {
-   cutPoint[i] = instance_find(objY, i);
-   instance_create((cutPoint[i]).x, (cutPoint[i]).y, objSpot);
-  }
+ if (obj_tester.ranNum == 4)
+ {
+  for (i = 0; i &lt; instance_number(objY); i++)
+   {
+    cutPoint[i] = instance_find(objY, i);
+    instance_create((cutPoint[i]).x, (cutPoint[i]).y, objSpot);
+   }
   
- obj_tester.ranNum = 0; 
+  obj_tester.ranNum = 0; 
+ }
 }
 
 </string>

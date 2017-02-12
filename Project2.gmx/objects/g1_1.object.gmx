@@ -83,8 +83,12 @@ with (obj_tester)
 
 with (objTarget)
 {
- if (hp &lt; maxHp) and instance_exists(g1_1)
+ if (hp &lt; maxHp) //and instance_exists(g1_1)
+ {
   g1_1.bgm = true;
+  if !instance_exists(bkPenta)
+   instance_create(0, 0, bkPenta)
+ }
 }
 if (instance_number(objTarget) == 0)
  room_goto_next();

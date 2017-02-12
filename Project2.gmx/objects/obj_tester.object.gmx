@@ -30,7 +30,9 @@ fwd = 0; horiz = 2;
 touches = 0;
 adjacentTar = false;
 ranNum = 0; storedRan = 0;
+
 var myTarget;
+
 impact = 1; special = false; buffered = false;
 left = false; right = true;
 scale = 0.6;
@@ -69,16 +71,24 @@ swipeR[2] = swRight2; ghostR[2] = gRight2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if special == false
+            <string>if !instance_exists(drawManager)
+ instance_create(0, 0, drawManager);
+
+if special == false
 {
  if right == true
   sprite_index = sprRight;
  if left == true
   sprite_index = sprLeft;
+  
+ view_object[0] = 0;
 }
 
 if special == true and room != rmMenu
 {
+ if instance_exists(object86)
+  view_object[0] = object86;
+  
  if buffered == false
  { swipeBuffer(); buffered = true; }
  

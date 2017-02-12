@@ -1,8 +1,26 @@
+//view_enabled = true;
+
+if shadeTime > 0
+ shadeTime--;
+else
+ drawManager.shader = 8;
+
+if instance_exists (object86)
+ object86.zoom_factor = 0.75;
+
+//start stationary
 if moving == false
 {
  if sitTime >= 0
   sitTime--;
 }
+ //remove click hotspots
+if instance_exists(objSpot)
+{
+ with (objSpot)
+  instance_destroy();
+}
+
 //transitioning
 if distance_to_point(objTar.x, objTar.y) > 1 and sitTime <= 0
 {
@@ -56,9 +74,9 @@ else if (distance_to_point(objTar.x, objTar.y) <= 1 and moving == true)
  sitTime = sitLength;
 
  if right
-  {objTar.x = objTarget.x-150; right = not right; left = true;}
+  {objTar.x = myTarget.x-150; right = not right; left = true;}
  else if left
-  { objTar.x = objTarget.x+150; left = not left; right = true;} 
-  
+  { objTar.x = myTarget.x+150; left = not left; right = true;} 
+ 
  moving = not moving; 
 }

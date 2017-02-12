@@ -67,10 +67,12 @@ scrPlayer(0, 0);
 
 with (obj_tester)
 {
-
- x = path_get_point_x(g2_2.row[fwd], horiz);
- y = path_get_point_y(g2_2.row[fwd], horiz);
- scrMvRow(g2_2, 6, 5);
+ if !special
+ { 
+  x = path_get_point_x(g2_2.row[fwd], horiz);
+  y = path_get_point_y(g2_2.row[fwd], horiz);
+  scrMvRow(g2_2, 6, 5);
+ }
 }
 
 if (instance_number(objTarget) == 0)

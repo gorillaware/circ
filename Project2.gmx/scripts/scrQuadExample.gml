@@ -1,3 +1,4 @@
+scale = 0.3;
 if moving == false
 {
  if sitTime >= 0

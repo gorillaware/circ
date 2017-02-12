@@ -115,8 +115,7 @@ if scaled == false
  depth = 1+(2*fwd);
  scaled = true;
 }
-//if blink == true;
- //image.visible 
+
 if (adjacent == true and dong.visible == false)
 {
  if (imgBlink &gt; 0)
@@ -136,13 +135,15 @@ if (hp &lt; 25)
  {x = irandom_range(startX-sprite_width/30, startX+sprite_width/30);}
 
 //defeat 
-if hp &lt;= 0
- { image_alpha -= .02; obj_tester.locked = false; }
+ if (hp &lt;= 0 and obj_tester.special == false)
+  { image_alpha -= .02; obj_tester.locked = false; }
 
-if image_alpha &lt;= 0
- instance_destroy();
+ if (image_alpha &lt;= 0 and obj_tester.special == false)
+  { 
+   instance_destroy(); 
+  }
   
-if (hp &lt;= 0 and !audio_is_playing(choose(defeat0, defeat1)))
+if (hp &lt;= 0 and !audio_is_playing(choose(defeat0, defeat1)) and obj_tester.special == false)
  audio_play_sound(defeat[irandom_range(0, 1)], 3, 0);
 </string>
           </argument>
@@ -216,6 +217,29 @@ if (hp &lt;= 0 and !audio_is_playing(choose(defeat0, defeat1)))
             <kind>1</kind>
             <string>draw_self();
 draw_text(x, y, string(hp));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="71">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hp = 1;
 </string>
           </argument>
         </arguments>

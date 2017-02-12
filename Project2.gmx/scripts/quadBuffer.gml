@@ -1,3 +1,4 @@
+//for quad example
 left = false; right = true;
 moving = false; sitLength = 20; sitTime = sitLength; 
 randomSet = false; ghostLength = 3; ghostTime = ghostLength; 

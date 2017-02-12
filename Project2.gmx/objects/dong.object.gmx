@@ -60,7 +60,7 @@ combo = 0;
  image_speed = 0.65;
 }
 
-if (image_speed == 0 and comboTime &gt; 0)
+if (image_speed == 0 and comboTime &gt; 0 and obj_tester.special == false)
 {
  comboTime -= 1;
 }
@@ -110,8 +110,6 @@ if sprite_index != sprDongS4
 else
 { 
  obj_tester.ranNum = 0; visible = false; 
- with (obj_tester.myTarget)
-  instance_destroy()
  sprite_index = sprDong;
 }
 </string>
