@@ -165,6 +165,7 @@
           <sprite>sprites\swRight2</sprite>
           <sprite>sprites\swRight0X</sprite>
         </sprites>
+        <sprite>sprites\sprGlide</sprite>
       </sprites>
     </sprites>
     <sprites name="effects">
@@ -197,6 +198,45 @@
       <sprite>sprites\spr3_2</sprite>
     </sprites>
     <sprite>sprites\sprPenta</sprite>
+    <sprites name="scenes">
+      <sprites name="visualization">
+        <sprites name="reptile">
+          <sprite>sprites\sprReptile</sprite>
+          <sprites name="cut0">
+            <sprite>sprites\repCut00</sprite>
+            <sprite>sprites\repCut01</sprite>
+          </sprites>
+          <sprites name="cut1">
+            <sprite>sprites\sprRepCut1</sprite>
+          </sprites>
+          <sprites name="cut2">
+            <sprite>sprites\sprCut2</sprite>
+          </sprites>
+          <sprites name="cut3">
+            <sprite>sprites\sprRepCut3</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="player">
+          <sprite>sprites\rushV</sprite>
+          <sprite>sprites\sprFighter</sprite>
+          <sprite>sprites\sprDive</sprite>
+          <sprite>sprites\sprHold</sprite>
+          <sprite>sprites\sprReach</sprite>
+          <sprite>sprites\sprLand0</sprite>
+          <sprite>sprites\sprRoll</sprite>
+          <sprite>sprites\sprLand</sprite>
+          <sprite>sprites\sprPcut0</sprite>
+          <sprite>sprites\sprPcut3</sprite>
+          <sprite>sprites\sprPcut1</sprite>
+          <sprite>sprites\sprProfile</sprite>
+        </sprites>
+        <sprite>sprites\sprGround</sprite>
+        <sprite>sprites\sprBranch</sprite>
+        <sprite>sprites\sprPlanet</sprite>
+        <sprite>sprites\sprBlu</sprite>
+      </sprites>
+      <sprite>sprites\sprAtmo</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -268,12 +308,13 @@
       <script>scripts\scrSwipeCount.gml</script>
       <script>scripts\scrStrikesNum.gml</script>
       <script>scripts\selfDestruct.gml</script>
+      <script>scripts\scrShake.gml</script>
+      <script>scripts\scrFloat.gml</script>
     </scripts>
     <scripts name="loadSave">
       <script>scripts\saveData.gml</script>
       <script>scripts\loadData.gml</script>
     </scripts>
-    <script>scripts\script21.gml</script>
   </scripts>
   <shaders name="shaders">
     <shaders name="brightness">
@@ -437,11 +478,45 @@
     <object>objects\objEgg</object>
     <object>objects\objTar</object>
     <object>objects\object86</object>
+    <objects name="scenes">
+      <object>objects\sceneManager</object>
+      <objects name="visualization">
+        <objects name="player">
+          <object>objects\objGlide</object>
+          <object>objects\objDive</object>
+          <object>objects\objReach</object>
+          <object>objects\objHold</object>
+          <object>objects\objRoll</object>
+          <object>objects\objLanding</object>
+          <object>objects\objLanded</object>
+          <object>objects\objPcut0</object>
+          <object>objects\objPcut1</object>
+          <object>objects\objPcut3</object>
+          <object>objects\objVisEnd</object>
+        </objects>
+        <objects name="reptile">
+          <object>objects\objReptile</object>
+          <object>objects\objRepCut00</object>
+          <object>objects\objRepCut01</object>
+          <object>objects\objRepCut1</object>
+          <object>objects\objRepCut2</object>
+          <object>objects\objRepCut3</object>
+        </objects>
+        <objects name="environment">
+          <object>objects\objRush</object>
+          <object>objects\objAtmo</object>
+          <object>objects\objGround0</object>
+          <object>objects\objBranched</object>
+          <object>objects\objBlue</object>
+        </objects>
+      </objects>
+    </objects>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\timeline0</timeline>
   </timelines>
   <rooms name="rooms">
+    <room>rooms\rmVis</room>
     <room>rooms\rmMenu</room>
     <room>rooms\rmIntro</room>
     <room>rooms\rm1_1</room>
