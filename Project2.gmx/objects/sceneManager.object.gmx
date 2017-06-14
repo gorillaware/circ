@@ -25,29 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>shot=1;
-shotCount=15;
-allD=false;
+            <string>if room == rmVis
+{
+ scrVisCreate();
+ instance_deactivate_all(true);
+}
 
-instance_create(0, 0, objBlue);
-instance_create(0, 0, objRush);
-instance_create(0, 0, objReach);
-instance_create(0, 0, objHold);
-instance_create(0, 0, objLanding);
-instance_create(0, 0, objLanded);
-instance_create(0, 0, objReptile);
-instance_create(0, 0, objGround0);
-instance_create(0, 0, objAtmo);
-instance_create(0, 0, objRepCut00);
-instance_create(0, 0, objRepCut01);
-instance_create(0, 0, objRepCut1);
-instance_create(0, 0, objRepCut2);
-instance_create(0, 0, objRepCut3);
-instance_create(0, 0, objPcut0);
-instance_create(0, 0, objPcut1);
-instance_create(0, 0, objPcut3);
-instance_create(0, 0, objBranched);
-instance_create(0, 0, objVisEnd);
+if room == rmTrain
+{
+ shot = 2;
+ shotCount = 2;
+ shotTime = 99;
+ shotLength = 99;
+ 
+ instance_create(0, 0, doorFrame);
+ instance_create(0, 0, leftDoor);
+ instance_create(0, 0, rightDoor);
+}
 
 instance_deactivate_all(true);
 </string>
@@ -74,76 +68,27 @@ instance_deactivate_all(true);
             <kind>1</kind>
             <string>//all objects of scene placed in room on creation
 //ONLY activates objects in the current shot
-switch shot 
+if room = rmVis
 {
- case 1:
-  instance_activate_object(objGlide);
- break;
- case 2:
-  instance_activate_object(objReach);
- break;
- case 3:
-  instance_activate_object(objHold);
- break;
- case 4:
-  instance_activate_object(objBlue);
-  instance_activate_object(objRush);
-  instance_activate_object(objDive);
- break;
- case 5:
-  instance_activate_object(objBlue);
-  instance_activate_object(objRoll);
-  instance_activate_object(objRush);
- break;
- case 6:
-  instance_activate_object(objLanding);
-  instance_activate_object(objAtmo);
-  instance_activate_object(objGround0);
- break;
- case 7:
-  instance_activate_object(objAtmo);
-  instance_activate_object(objLanded);
-  instance_activate_object(objGround0);
- break;
- case 8:  
-  instance_activate_object(objAtmo);
-  instance_activate_object(objReptile);
-  instance_activate_object(objLanded);
-  instance_activate_object(objGround0);
- break;
- case 9:
-  instance_activate_object(objAtmo);
-  instance_activate_object(objReptile);
-  instance_activate_object(objGround0);
- break;
- case 10:
-  instance_activate_object(objAtmo);
-  instance_activate_object(objBranched);
- break;
- case 11:
-  instance_activate_object(objBlue);
-  instance_activate_object(objRepCut00);
-  instance_activate_object(objRepCut01);
-  instance_activate_object(objPcut0);
- break;
- case 12:
-  instance_activate_object(objBlue); 
-  instance_activate_object(objPcut1);
-  instance_activate_object(objRepCut1);
- break;
- case 13:
-  instance_activate_object(objBlue);
-  instance_activate_object(objRepCut2);
- break;
- case 14:
-  instance_activate_object(objBlue);
-  instance_activate_object(objRepCut3);
-  instance_activate_object(objPcut3);
- break;
- case 15:
-  instance_activate_object(objAtmo);
-  instance_activate_object(objVisEnd);
- break;
+ scrVisStep();
+}
+
+if room = rmTrain
+{
+ instance_activate_object(objTunnel);
+ switch shot
+ {
+  case 2:
+   instance_activate_object(trGround);
+   instance_activate_object(trFront);
+   instance_activate_object(trFrontRails);
+  break;
+  case 1:
+   instance_activate_object(doorFrame);
+   instance_activate_object(leftDoor);
+   instance_activate_object(rightDoor);
+  break;
+ }
 }
 </string>
           </argument>
@@ -167,7 +112,8 @@ switch shot
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(600, 0, string(shot));
+            <string>//draw_text(600, 0, string(shot));
+//draw_text(600, 20, string(shotTime));
 </string>
           </argument>
         </arguments>
@@ -190,7 +136,9 @@ switch shot
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if allD == false
+            <string>if room = rmVis
+{
+if allD == false
  {
   instance_deactivate_all(true);
   allD = true;
@@ -200,6 +148,7 @@ else
   instance_activate_object(objGlide);
   allD = false;
  }
+}
 </string>
           </argument>
         </arguments>
@@ -228,6 +177,7 @@ if shot &lt; shotCount
  {instance_deactivate_all(true); shot++;}
 else
  {instance_deactivate_all(true); shot = 1;}
+ shotTime = shotLength;
 </string>
           </argument>
         </arguments>
@@ -254,6 +204,8 @@ else
  {instance_deactivate_all(true); shot--;}
 else
  {instance_deactivate_all(true); shot = shotCount;}
+ shotTime = shotLength;
+ 
 </string>
           </argument>
         </arguments>

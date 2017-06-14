@@ -230,12 +230,26 @@
           <sprite>sprites\sprPcut1</sprite>
           <sprite>sprites\sprProfile</sprite>
         </sprites>
+        <sprites name="train">
+          <sprites name="door">
+            <sprite>sprites\sprDoorFrame</sprite>
+            <sprite>sprites\sprLeftDoor</sprite>
+            <sprite>sprites\sprRightDoor</sprite>
+          </sprites>
+          <sprite>sprites\sprT_ground</sprite>
+          <sprite>sprites\sprT_front</sprite>
+          <sprite>sprites\sprT_seated</sprite>
+          <sprite>sprites\sprT_bag</sprite>
+          <sprite>sprites\sprT_frontR</sprite>
+          <sprite>sprites\trMask</sprite>
+        </sprites>
         <sprite>sprites\sprGround</sprite>
         <sprite>sprites\sprBranch</sprite>
         <sprite>sprites\sprPlanet</sprite>
         <sprite>sprites\sprBlu</sprite>
       </sprites>
       <sprite>sprites\sprAtmo</sprite>
+      <sprite>sprites\sprTunnel</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -314,6 +328,10 @@
     <scripts name="loadSave">
       <script>scripts\saveData.gml</script>
       <script>scripts\loadData.gml</script>
+    </scripts>
+    <scripts name="scene">
+      <script>scripts\scrVisCreate.gml</script>
+      <script>scripts\scrVisStep.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -475,11 +493,7 @@
         </objects>
       </objects>
     </objects>
-    <object>objects\objEgg</object>
-    <object>objects\objTar</object>
-    <object>objects\object86</object>
     <objects name="scenes">
-      <object>objects\sceneManager</object>
       <objects name="visualization">
         <objects name="player">
           <object>objects\objGlide</object>
@@ -510,12 +524,30 @@
           <object>objects\objBlue</object>
         </objects>
       </objects>
+      <objects name="train">
+        <objects name="door">
+          <object>objects\doorFrame</object>
+          <object>objects\leftDoor</object>
+          <object>objects\rightDoor</object>
+        </objects>
+        <object>objects\trGround</object>
+        <object>objects\trFront</object>
+        <object>objects\trSeat</object>
+        <object>objects\trBag</object>
+        <object>objects\trFrontRails</object>
+      </objects>
+      <object>objects\sceneManager</object>
+      <object>objects\objTunnel</object>
     </objects>
+    <object>objects\objEgg</object>
+    <object>objects\objTar</object>
+    <object>objects\object86</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\timeline0</timeline>
   </timelines>
   <rooms name="rooms">
+    <room>rooms\rmTrain</room>
     <room>rooms\rmVis</room>
     <room>rooms\rmMenu</room>
     <room>rooms\rmIntro</room>
