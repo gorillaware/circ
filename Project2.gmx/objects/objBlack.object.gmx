@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = .5;
+            <string>if room != rmVis
+ image_alpha = .5;
+alpha = 1;
 time = 40;
 </string>
           </argument>
@@ -49,9 +51,13 @@ time = 40;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>time -= 1;
+            <string>if room != rmVis
+ time -= 1;
 if instance_exists(obj_tester) and obj_tester.special == false
  instance_destroy();
+
+if room == rmVis
+ image_alpha = alpha; 
 </string>
           </argument>
         </arguments>

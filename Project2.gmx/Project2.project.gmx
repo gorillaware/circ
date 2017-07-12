@@ -26,26 +26,38 @@
     <extension index="0">extensions\Simple Fullscreen Shaders</extension>
   </NewExtensions>
   <sounds name="sound">
-    <sounds name="screams">
-      <sound>sound\sc1</sound>
-      <sound>sound\sc2</sound>
-      <sound>sound\sc3</sound>
-      <sound>sound\sc4</sound>
-      <sound>sound\sc5</sound>
-      <sound>sound\sc6</sound>
+    <sounds name="voice">
+      <sounds name="infant">
+        <sound>sound\sc1</sound>
+        <sound>sound\sc2</sound>
+        <sound>sound\sc3</sound>
+        <sound>sound\sc4</sound>
+        <sound>sound\sc5</sound>
+        <sound>sound\sc6</sound>
+      </sounds>
+      <sounds name="dialog">
+        <sound>sound\snTalk</sound>
+      </sounds>
+      <sound>sound\TREX</sound>
     </sounds>
     <sounds name="effects">
-      <sound>sound\defeat0</sound>
-      <sound>sound\defeat1</sound>
-      <sound>sound\slash0</sound>
-      <sound>sound\slash1</sound>
-      <sound>sound\slash2</sound>
-      <sound>sound\smack0</sound>
-      <sound>sound\smack1</sound>
-      <sound>sound\smack2</sound>
+      <sounds name="combat">
+        <sound>sound\defeat0</sound>
+        <sound>sound\defeat1</sound>
+        <sound>sound\slash0</sound>
+        <sound>sound\slash1</sound>
+        <sound>sound\slash2</sound>
+        <sound>sound\smack0</sound>
+        <sound>sound\smack1</sound>
+        <sound>sound\smack2</sound>
+      </sounds>
+      <sound>sound\snDive</sound>
+      <sound>sound\THUD</sound>
     </sounds>
-    <sound>sound\snPositive</sound>
-    <sound>sound\snTalk</sound>
+    <sounds name="BGM">
+      <sound>sound\snPositive</sound>
+      <sound>sound\noEngles</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="anti">
@@ -202,6 +214,7 @@
       <sprites name="visualization">
         <sprites name="reptile">
           <sprite>sprites\sprReptile</sprite>
+          <sprite>sprites\sprShook</sprite>
           <sprites name="cut0">
             <sprite>sprites\repCut00</sprite>
             <sprite>sprites\repCut01</sprite>
@@ -309,29 +322,41 @@
       <script>scripts\boxFace.gml</script>
     </scripts>
     <scripts name="action">
-      <script>scripts\stringReverse.gml</script>
-      <script>scripts\scrMvCol.gml</script>
-      <script>scripts\scrMvRow.gml</script>
-      <script>scripts\selectStage.gml</script>
-      <script>scripts\inflictDamage.gml</script>
-      <script>scripts\scream.gml</script>
-      <script>scripts\quadBuffer.gml</script>
-      <script>scripts\swipeBuffer.gml</script>
-      <script>scripts\scrQuadExample.gml</script>
-      <script>scripts\scrHorizonStrike.gml</script>
-      <script>scripts\scrSwipeCount.gml</script>
-      <script>scripts\scrStrikesNum.gml</script>
-      <script>scripts\selfDestruct.gml</script>
-      <script>scripts\scrShake.gml</script>
-      <script>scripts\scrFloat.gml</script>
+      <scripts name="navigation">
+        <script>scripts\scrMvCol.gml</script>
+        <script>scripts\scrMvRow.gml</script>
+        <script>scripts\selectStage.gml</script>
+      </scripts>
+      <scripts name="combat">
+        <script>scripts\inflictDamage.gml</script>
+        <script>scripts\scream.gml</script>
+        <script>scripts\quadBuffer.gml</script>
+        <script>scripts\swipeBuffer.gml</script>
+        <script>scripts\scrQuadExample.gml</script>
+        <script>scripts\scrHorizonStrike.gml</script>
+        <script>scripts\scrSwipeCount.gml</script>
+        <script>scripts\scrStrikesNum.gml</script>
+        <script>scripts\selfDestruct.gml</script>
+      </scripts>
+      <scripts name="misc.">
+        <script>scripts\stringReverse.gml</script>
+        <script>scripts\scrShake.gml</script>
+        <script>scripts\scrFloat.gml</script>
+      </scripts>
     </scripts>
     <scripts name="loadSave">
       <script>scripts\saveData.gml</script>
       <script>scripts\loadData.gml</script>
     </scripts>
     <scripts name="scene">
-      <script>scripts\scrVisCreate.gml</script>
-      <script>scripts\scrVisStep.gml</script>
+      <scripts name="audio">
+        <script>scripts\startSound.gml</script>
+        <script>scripts\startLoop.gml</script>
+      </scripts>
+      <scripts name="visualization">
+        <script>scripts\scrVisCreate.gml</script>
+        <script>scripts\scrVisStep.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -515,6 +540,7 @@
           <object>objects\objRepCut1</object>
           <object>objects\objRepCut2</object>
           <object>objects\objRepCut3</object>
+          <object>objects\objShook</object>
         </objects>
         <objects name="environment">
           <object>objects\objRush</object>
@@ -523,6 +549,7 @@
           <object>objects\objBranched</object>
           <object>objects\objBlue</object>
         </objects>
+        <object>objects\visBlack</object>
       </objects>
       <objects name="train">
         <objects name="door">
@@ -547,8 +574,8 @@
     <timeline>timelines\timeline0</timeline>
   </timelines>
   <rooms name="rooms">
-    <room>rooms\rmTrain</room>
     <room>rooms\rmVis</room>
+    <room>rooms\rmTrain</room>
     <room>rooms\rmMenu</room>
     <room>rooms\rmIntro</room>
     <room>rooms\rm1_1</room>

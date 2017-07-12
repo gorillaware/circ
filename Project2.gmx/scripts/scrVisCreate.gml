@@ -1,16 +1,18 @@
 shot=1;
 shotCount=15;
 allD=false;
-shotLength = 60*5;
-shotTime = shotLength;
+shotLengthNext = 60*13;
+shotTime = shotLengthNext;
 
 instance_create(0, 0, objBlue);
+instance_create(0, 0, visBlack);
 instance_create(0, 0, objRush);
 instance_create(0, 0, objReach);
 instance_create(0, 0, objHold);
 instance_create(0, 0, objLanding);
 instance_create(0, 0, objLanded);
 instance_create(0, 0, objReptile);
+instance_create(0, 0, objShook);
 instance_create(0, 0, objGround0);
 instance_create(0, 0, objAtmo);
 instance_create(0, 0, objRepCut00);

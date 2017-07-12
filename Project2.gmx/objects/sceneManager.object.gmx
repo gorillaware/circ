@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room == rmVis
+            <string>//currentSound = nothing;
+stepsLeft = 100;
+played=false;
+
+if room == rmVis
 {
  scrVisCreate();
  instance_deactivate_all(true);
@@ -36,7 +40,7 @@ if room == rmTrain
  shot = 2;
  shotCount = 2;
  shotTime = 99;
- shotLength = 99;
+ shotLengthNext = 99;
  
  instance_create(0, 0, doorFrame);
  instance_create(0, 0, leftDoor);
@@ -114,6 +118,9 @@ if room = rmTrain
             <kind>1</kind>
             <string>//draw_text(600, 0, string(shot));
 //draw_text(600, 20, string(shotTime));
+draw_text(420, 420, string(stepsLeft));
+draw_text(420, 450, string(played));
+draw_text(0, 30, "shot time: " + string(sceneManager.shotTime));
 </string>
           </argument>
         </arguments>
@@ -177,7 +184,7 @@ if shot &lt; shotCount
  {instance_deactivate_all(true); shot++;}
 else
  {instance_deactivate_all(true); shot = 1;}
- shotTime = shotLength;
+ shotTime = shotLengthNext;
 </string>
           </argument>
         </arguments>
@@ -204,7 +211,7 @@ else
  {instance_deactivate_all(true); shot--;}
 else
  {instance_deactivate_all(true); shot = shotCount;}
- shotTime = shotLength;
+ shotTime = shotLengthNext;
  
 </string>
           </argument>

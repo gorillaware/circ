@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sceneManager.shot == 9
+            <string>if sceneManager.shot &gt; 8
  image_index = 1;
 else
  image_index = 0;

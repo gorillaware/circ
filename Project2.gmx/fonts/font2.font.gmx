@@ -35,11 +35,11 @@
     <glyph character="32" x="141" y="69" w="6" h="19" shift="6" offset="0"/>
     <glyph character="91" x="13" y="69" w="8" h="17" shift="5" offset="1"/>
     <glyph character="57" x="222" y="47" w="9" h="16" shift="8" offset="2"/>
-    <glyph character="97" x="158" y="69" w="7" h="16" shift="7" offset="1"/>
     <glyph character="79" x="214" y="25" w="11" h="16" shift="11" offset="2"/>
-    <glyph character="114" x="72" y="47" w="10" h="16" shift="8" offset="1"/>
-    <glyph character="107" x="188" y="25" w="11" h="16" shift="10" offset="1"/>
+    <glyph character="97" x="158" y="69" w="7" h="16" shift="7" offset="1"/>
     <glyph character="98" x="108" y="47" w="10" h="16" shift="9" offset="1"/>
+    <glyph character="107" x="188" y="25" w="11" h="16" shift="10" offset="1"/>
+    <glyph character="114" x="72" y="47" w="10" h="16" shift="8" offset="1"/>
     <glyph character="46" x="67" y="90" w="2" h="16" shift="4" offset="2"/>
     <glyph character="38" x="156" y="47" w="9" h="17" shift="10" offset="1"/>
     <glyph character="100" x="96" y="47" w="10" h="16" shift="9" offset="2"/>

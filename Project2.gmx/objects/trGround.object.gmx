@@ -63,8 +63,11 @@ thumpReset = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//bumps the train up briefly, then sets it back down based off a timer split in half
-//for up and down motion on each thump
+            <string>if audio_is_playing(noEngles)
+ audio_stop_sound(noEngles);
+
+//bumps the train up briefly, then sets it back down based off a timer split in half...
+//...for up and down motion on each thump
 if thump == true
 {
  if framesLeft &gt; 0
@@ -88,7 +91,7 @@ else if objTunnel.thumpTimer &lt;= 0
  thump = true;
  
 if thumpReset == true
-objTunnel.thumpTimer = irandom_range(15, 600);
+objTunnel.thumpTimer = irandom_range(30, 600);
 </string>
           </argument>
         </arguments>
