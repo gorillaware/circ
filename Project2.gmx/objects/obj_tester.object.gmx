@@ -33,6 +33,10 @@ ranNum = 0; storedRan = 0;
 
 var myTarget;
 
+blitzBuffered = false;
+diving = false;
+blitz = false;
+
 impact = 1; special = false; buffered = false;
 left = false; right = true;
 scale = 0.6;
@@ -74,7 +78,9 @@ swipeR[2] = swRight2; ghostR[2] = gRight2;
             <string>if !instance_exists(drawManager)
  instance_create(0, 0, drawManager);
 
-if special == false
+//always facing left or right
+//should be revised to include forward and backwards
+if special == false and keyboard_check(vk_control) == false
 {
  if right == true
   sprite_index = sprRight;
@@ -86,21 +92,33 @@ if special == false
 
 if special == true and room != rmMenu
 {
- if instance_exists(object86)
+ if instance_exists(object86) //object86 is camera focal point, should be renamed
   view_object[0] = object86;
+
+ if instance_exists(horizonStrike) and superSelect.super == 1
+ {
+  //cue script to brace game for special attack in a (presumably) stable fashion  
+  if buffered == false
+   { swipeBuffer(); buffered = true; }
+ 
+  scrHorizonStrike(); //begin striking
+  scrStrikesNum(); //count each hit
+ }
+ 
+ if instance_exists(diveBlitz) and superSelect.super == 2
+ {
+  if blitzBuffered == false
+   { diveBuffer(); blitzBuffered = true; }
   
- if buffered == false
- { swipeBuffer(); buffered = true; }
- 
- scrHorizonStrike();
- scrStrikesNum();
+  scrDiveBlitz();
+  scrPostDive(); 
+ }
 }
+
 if mouse_check_button(mb_left)
-  instance_create(mouse_x, mouse_y, objStar);
- 
-if mouse_check_button_pressed(mb_right)
- instance_create(mouse_x, mouse_y, targetBox.slash[0]);
- 
+ instance_create(mouse_x, mouse_y, objStar);
+
+//touch all recticles to register a hit 
 if touches &gt;= instance_number(objSpot)
 {
  with(objSpot)
@@ -119,14 +137,14 @@ if touches &gt;= instance_number(objSpot)
 }
 
 //mouse
-// html5 DOESNT WORK
+// html5 click release when cursor is out of bounds, only it doesn't work
 if (os_browser &lt;&gt; browser_not_a_browser)
 {   
     dx = window_mouse_get_x() - window_get_x();
     dy = window_mouse_get_y() - window_get_y();
 }
 
-// windows
+// windows click release when cursor is out of bounds
 else if (os_type == os_windows)
 {
     dx = display_mouse_get_x() - window_get_x();
@@ -137,6 +155,29 @@ if ((dx &lt; 0 || dx &gt; window_get_width()) || (dy &lt; 0 || dy &gt; window_ge
 {
      mouse_clear(mb_any);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scrDiveBlitz_new();
 </string>
           </argument>
         </arguments>
@@ -211,6 +252,54 @@ draw_text(x-16, y-16, fwd);
 {
  special = true;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>diveBuffer_new();
+//thunderNum = irandom_range(0, 1);
+//thunderTime = audio_sound_length(thunder[thunderNum])*room_speed;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="17">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scrPostDive_new();
 </string>
           </argument>
         </arguments>

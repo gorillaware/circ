@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//currentSound = nothing;
+            <string>
 stepsLeft = 100;
-played=false;
+played=false; // &lt;- binary switch for audio scripts, allows audio to play once; 
+              // prevents audio from overlapping itself on every frame
 
 if room == rmVis
 {
@@ -37,14 +38,29 @@ if room == rmVis
 
 if room == rmTrain
 {
- shot = 2;
+ instance_create(0, 0, bg);
+ shot = 1;
  shotCount = 2;
- shotTime = 99;
  shotLengthNext = 99;
+ shotTime = shotLengthNext;
+ 
+ tCount = 2;
+ nextTimer = 0.402*room_speed;
+ seatTimer = 2*room_speed;
+ timer = nextTimer;
+ moveTimer = room_speed*2;
+ t=0;
+ 
+ if audio_is_playing(noEngles)
+  audio_stop_sound(noEngles);
  
  instance_create(0, 0, doorFrame);
  instance_create(0, 0, leftDoor);
  instance_create(0, 0, rightDoor);
+ instance_create(room_width/2, room_height/2, trSeat);
+ instance_create(room_width/2, room_height/2, trBag);
+ instance_create(0, 0, objCox0);
+ instance_create(0, 0, objCox1);
 }
 
 instance_deactivate_all(true);
@@ -72,28 +88,89 @@ instance_deactivate_all(true);
             <kind>1</kind>
             <string>//all objects of scene placed in room on creation
 //ONLY activates objects in the current shot
+//instance_activate_object(drawManager);
+
 if room = rmVis
 {
  scrVisStep();
 }
-
+//instance_activate_object(drawManager);
 if room = rmTrain
 {
+ instance_activate_object(drawManager);
  instance_activate_object(objTunnel);
+ 
+ switch t
+ {
+  case 0:
+   if audio_is_playing(deepDefeat)
+    audio_stop_sound(deepDefeat);
+   startSound(TTC, 0);
+   nextTimer = 12.116*room_speed;
+  break;
+  case 1: 
+   seatTimer--;
+   if instance_exists(doorFrame)
+    {doorFrame.open = true; doorFrame.close = false;}
+   nextTimer = 1.352*room_speed;
+  break;
+  case 2:
+   if instance_exists(doorFrame)
+   {
+    doorFrame.open = not doorFrame.open;
+    doorFrame.close = true;
+   }
+   nextTimer = 0.402*room_speed;
+  break;
+ }
+ 
+if seatTimer &lt;= 0
+{
+ instance_deactivate_all(true); shot = 2;
+ moveTimer--;
+}
+
+//cycles through timers, reset the flag for startSound script  
+if timer &gt; 0
+  timer--;
+ else
+ {
+  if t &lt;= tCount
+  {
+   played = false;
+   instance_deactivate_all(true);
+   t++; timer = nextTimer;
+  }
+  if t &gt; tCount
+  {
+   played = false;
+   instance_deactivate_all(true);
+   game_end(); //on last timer
+  } 
+ }
+ instance_activate_object(drawManager);
  switch shot
  {
   case 2:
    instance_activate_object(trGround);
    instance_activate_object(trFront);
    instance_activate_object(trFrontRails);
+   instance_activate_object(trSeat);
+   instance_activate_object(trBag);
   break;
   case 1:
    instance_activate_object(doorFrame);
    instance_activate_object(leftDoor);
    instance_activate_object(rightDoor);
+   instance_deactivate_object(objTunnel);
   break;
  }
+ 
+if moveTimer &lt;= 0 and trSeat.x &gt; 0
+ startSound(snSlide, 21);
 }
+instance_activate_object(drawManager);
+instance_activate_object(bg);
 </string>
           </argument>
         </arguments>
@@ -116,45 +193,17 @@ if room = rmTrain
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_text(600, 0, string(shot));
-//draw_text(600, 20, string(shotTime));
+            <string>if room != rmTrain
+{
 draw_text(420, 420, string(stepsLeft));
 draw_text(420, 450, string(played));
 draw_text(0, 30, "shot time: " + string(sceneManager.shotTime));
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="71">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if room = rmVis
+draw_text(0, 60, "shot: " + string(sceneManager.shot));
+}
+else
 {
-if allD == false
- {
-  instance_deactivate_all(true);
-  allD = true;
- }
-else 
- { 
-  instance_activate_object(objGlide);
-  allD = false;
- }
+ draw_text(0, 30, "timer: " + string(sceneManager.timer));
+ draw_text(0, 60, "t: " + string(sceneManager.t));
 }
 </string>
           </argument>

@@ -51,11 +51,11 @@ pos = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(ord('Q'))) {
+            <string>if (keyboard_check(ord('J'))) {
   pos -= 0.01;
 }
 
-if (keyboard_check(ord('E'))) {
+if (keyboard_check(ord('K'))) {
   pos += 0.01;
 }
 

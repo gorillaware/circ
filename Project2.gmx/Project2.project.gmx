@@ -39,6 +39,7 @@
         <sound>sound\snTalk</sound>
       </sounds>
       <sound>sound\TREX</sound>
+      <sound>sound\deepDefeat</sound>
     </sounds>
     <sounds name="effects">
       <sounds name="combat">
@@ -51,13 +52,22 @@
         <sound>sound\smack1</sound>
         <sound>sound\smack2</sound>
       </sounds>
+      <sound>sound\TTC</sound>
       <sound>sound\snDive</sound>
       <sound>sound\THUD</sound>
+      <sound>sound\snCurs</sound>
+      <sound>sound\snSlide</sound>
+      <sound>sound\snThunder0</sound>
+      <sound>sound\snThunder1</sound>
+      <sound>sound\snRumble</sound>
     </sounds>
     <sounds name="BGM">
       <sound>sound\snPositive</sound>
       <sound>sound\noEngles</sound>
     </sounds>
+    <sound>sound\chomp</sound>
+    <sound>sound\swish</sound>
+    <sound>sound\suitUp</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="anti">
@@ -95,17 +105,22 @@
       <sprite>sprites\sprObstruct</sprite>
     </sprites>
     <sprites name="gui">
-      <sprite>sprites\sprStatus</sprite>
-      <sprite>sprites\sprBox</sprite>
-      <sprite>sprites\sprMult</sprite>
-      <sprite>sprites\sprStatus1</sprite>
-      <sprite>sprites\sprSpec</sprite>
       <sprites name="corners">
         <sprite>sprites\sprY</sprite>
         <sprite>sprites\sprR</sprite>
         <sprite>sprites\sprG</sprite>
         <sprite>sprites\sprB</sprite>
       </sprites>
+      <sprites name="supers">
+        <sprite>sprites\super1</sprite>
+        <sprite>sprites\super2</sprite>
+        <sprite>sprites\super0</sprite>
+      </sprites>
+      <sprite>sprites\sprStatus</sprite>
+      <sprite>sprites\sprBox</sprite>
+      <sprite>sprites\sprMult</sprite>
+      <sprite>sprites\sprStatus1</sprite>
+      <sprite>sprites\sprSpec</sprite>
       <sprite>sprites\sprSpot</sprite>
       <sprite>sprites\sprTarget</sprite>
       <sprite>sprites\sprite69</sprite>
@@ -178,6 +193,11 @@
           <sprite>sprites\swRight0X</sprite>
         </sprites>
         <sprite>sprites\sprGlide</sprite>
+        <sprites name="diveBlitz">
+          <sprite>sprites\sprNeutral</sprite>
+          <sprite>sprites\sprRush</sprite>
+          <sprite>sprites\sprDrop</sprite>
+        </sprites>
       </sprites>
     </sprites>
     <sprites name="effects">
@@ -198,6 +218,7 @@
           <sprite>sprites\s_player</sprite>
         </sprites>
       </sprites>
+      <sprite>sprites\sprCloud</sprite>
     </sprites>
     <sprite>sprites\sprLivingRoom</sprite>
     <sprite>sprites\sprSound</sprite>
@@ -228,6 +249,7 @@
           <sprites name="cut3">
             <sprite>sprites\sprRepCut3</sprite>
           </sprites>
+          <sprite>sprites\sprRepWreck</sprite>
         </sprites>
         <sprites name="player">
           <sprite>sprites\rushV</sprite>
@@ -255,6 +277,8 @@
           <sprite>sprites\sprT_bag</sprite>
           <sprite>sprites\sprT_frontR</sprite>
           <sprite>sprites\trMask</sprite>
+          <sprite>sprites\sprCox0</sprite>
+          <sprite>sprites\sprCox1</sprite>
         </sprites>
         <sprite>sprites\sprGround</sprite>
         <sprite>sprites\sprBranch</sprite>
@@ -265,7 +289,11 @@
       <sprite>sprites\sprTunnel</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+    <background>background\bgCox</background>
+    <background>background\bgEat</background>
+  </backgrounds>
   <paths name="paths">
     <paths name="3-2">
       <path>paths\L3S2P0</path>
@@ -330,13 +358,29 @@
       <scripts name="combat">
         <script>scripts\inflictDamage.gml</script>
         <script>scripts\scream.gml</script>
-        <script>scripts\quadBuffer.gml</script>
-        <script>scripts\swipeBuffer.gml</script>
-        <script>scripts\scrQuadExample.gml</script>
-        <script>scripts\scrHorizonStrike.gml</script>
-        <script>scripts\scrSwipeCount.gml</script>
-        <script>scripts\scrStrikesNum.gml</script>
         <script>scripts\selfDestruct.gml</script>
+        <scripts name="supers">
+          <scripts name="Example">
+            <script>scripts\scrQuadExample.gml</script>
+            <script>scripts\quadBuffer.gml</script>
+            <script>scripts\scrSwipeCount.gml</script>
+          </scripts>
+          <scripts name="horizonStrike">
+            <script>scripts\scrHorizonStrike.gml</script>
+            <script>scripts\swipeBuffer.gml</script>
+            <script>scripts\scrStrikesNum.gml</script>
+          </scripts>
+          <scripts name="diveBlitz">
+            <script>scripts\diveBuffer.gml</script>
+            <script>scripts\diveBuffer_new.gml</script>
+            <script>scripts\scrDiveBlitz.gml</script>
+            <script>scripts\scrDiveBlitz_new.gml</script>
+            <script>scripts\scrPostDive.gml</script>
+            <script>scripts\scrPostDive_new.gml</script>
+          </scripts>
+          <script>scripts\badTouch.gml</script>
+          <script>scripts\de_spot.gml</script>
+        </scripts>
       </scripts>
       <scripts name="misc.">
         <script>scripts\stringReverse.gml</script>
@@ -444,6 +488,11 @@
       <objects name="combat">
         <object>objects\targetBox</object>
         <object>objects\objSpot</object>
+        <objects name="supers">
+          <object>objects\horizonStrike</object>
+          <object>objects\diveBlitz</object>
+          <object>objects\superSelect</object>
+        </objects>
       </objects>
       <objects name="status">
         <object>objects\objStats</object>
@@ -517,6 +566,7 @@
           <object>objects\o_shader_start</object>
         </objects>
       </objects>
+      <object>objects\objCloud</object>
     </objects>
     <objects name="scenes">
       <objects name="visualization">
@@ -541,6 +591,7 @@
           <object>objects\objRepCut2</object>
           <object>objects\objRepCut3</object>
           <object>objects\objShook</object>
+          <object>objects\objRepWreck</object>
         </objects>
         <objects name="environment">
           <object>objects\objRush</object>
@@ -562,9 +613,12 @@
         <object>objects\trSeat</object>
         <object>objects\trBag</object>
         <object>objects\trFrontRails</object>
+        <object>objects\objCox0</object>
+        <object>objects\objCox1</object>
       </objects>
       <object>objects\sceneManager</object>
       <object>objects\objTunnel</object>
+      <object>objects\bg</object>
     </objects>
     <object>objects\objEgg</object>
     <object>objects\objTar</object>
@@ -574,12 +628,13 @@
     <timeline>timelines\timeline0</timeline>
   </timelines>
   <rooms name="rooms">
-    <room>rooms\rmVis</room>
+    <room>rooms\room10</room>
     <room>rooms\rmTrain</room>
-    <room>rooms\rmMenu</room>
-    <room>rooms\rmIntro</room>
+    <room>rooms\rmVis</room>
     <room>rooms\rm1_1</room>
     <room>rooms\rm2_1</room>
+    <room>rooms\rmMenu</room>
+    <room>rooms\rmIntro</room>
     <room>rooms\rm2_2</room>
     <room>rooms\rm3_1</room>
     <room>rooms\rm3_2</room>

@@ -30,14 +30,13 @@ y = room_height/2;
 
 image_xscale = 1.2;
 image_yscale = 1.2;
-
+ 
 instance_create(0, -32, objTunnel);
 startX = x;
 startY = y;
 frameCount = 15;
 framesLeft = frameCount;
 thump = false;
-//thumpTimer = irandom_range(15, 120);
 thumpReset = false;
 
 
@@ -84,14 +83,17 @@ if thump == false
  { framesLeft = frameCount; y = startY; } 
 
 //spaces out bumps randomly based off a timer 
+if instance_exists(objTunnel)
+{
  if objTunnel.thumpTimer &gt; 0
-{thump = false; thumpReset = false; objTunnel.thumpTimer--;}
+ {thump = false; thumpReset = false; objTunnel.thumpTimer--;}
 
-else if objTunnel.thumpTimer &lt;= 0
- thump = true;
+ else if objTunnel.thumpTimer &lt;= 0
+  thump = true;
  
-if thumpReset == true
-objTunnel.thumpTimer = irandom_range(30, 600);
+ if thumpReset == true
+  objTunnel.thumpTimer = irandom_range(30, 600);
+}
 </string>
           </argument>
         </arguments>

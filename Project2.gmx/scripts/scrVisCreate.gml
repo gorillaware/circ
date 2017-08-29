@@ -1,11 +1,11 @@
 shot=1;
-shotCount=15;
+shotCount=17;
 allD=false;
-shotLengthNext = 60*13;
+shotLengthNext = 60*16;
 shotTime = shotLengthNext;
 
 instance_create(0, 0, objBlue);
-instance_create(0, 0, visBlack);
+//instance_create(0, 0, visBlack);
 instance_create(0, 0, objRush);
 instance_create(0, 0, objReach);
 instance_create(0, 0, objHold);
@@ -24,4 +24,5 @@ instance_create(0, 0, objPcut0);
 instance_create(0, 0, objPcut1);
 instance_create(0, 0, objPcut3);
 instance_create(0, 0, objBranched);
+instance_create(0, 0, objRepWreck);
 instance_create(0, 0, objVisEnd);

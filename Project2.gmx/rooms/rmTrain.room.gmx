@@ -54,7 +54,8 @@
     <instance objName="trGround" x="0" y="0" name="inst_DD2B02FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="trFront" x="0" y="0" name="inst_28B9E196" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEgg" x="59" y="340" name="inst_AE77DC47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="sceneManager" x="608" y="32" name="inst_E387319C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="sceneManager" x="320" y="256" name="inst_36A5C527" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="drawManager" x="96" y="64" name="inst_3E4424AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

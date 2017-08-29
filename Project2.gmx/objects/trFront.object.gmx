@@ -8,7 +8,7 @@
   <parentName>trGround</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-draw_text(x, y, "x: "+ string(objTunnel.x));
-draw_text(x+30, y, "y: " + string(objTunnel.y));
+            <string>myDepth = depth;
 </string>
           </argument>
         </arguments>

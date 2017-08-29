@@ -52,8 +52,23 @@ open = 0;
             <string>if open == true and leftDoor.x &gt; 0-room_width/2
 { leftDoor.x-=3; rightDoor.x+=3; }
 
-if close == true and leftDoor.x &lt; 0
-{ leftDoor.x+=3; rightDoor.x-=3; }
+/*if shotTime &gt; 0
+  shotTime--;
+ else
+ {
+  if shot &lt;= shotCount
+  {
+   played = false;
+   instance_deactivate_all(true);
+   shot++; shotTime = shotLengthNext;
+  }
+  if shot &gt; shotCount
+  {
+   played = false;
+   instance_deactivate_all(true);
+   shot = 1; shotTime = shotLengthNext;
+  } 
+ }
 </string>
           </argument>
         </arguments>
