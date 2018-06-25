@@ -1,11 +1,11 @@
-shot=1;
+setupShot(17, 16);
+/*shot=1;
 shotCount=17;
 allD=false;
 shotLengthNext = 60*16;
-shotTime = shotLengthNext;
+shotTime = shotLengthNext;*/
 
 instance_create(0, 0, objBlue);
-//instance_create(0, 0, visBlack);
 instance_create(0, 0, objRush);
 instance_create(0, 0, objReach);
 instance_create(0, 0, objHold);

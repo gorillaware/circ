@@ -1,6 +1,6 @@
 //shots advance consecutively 
 //the timing of each shot is set in the previous shot (or create event for case 1).
-//Every object is deactivated,
+//Every object is deactivated between shots,
 //then various objects are reactivated depending on the current shot
 switch shot 
 {
@@ -115,20 +115,4 @@ switch shot
   break;
  }
 
-if shotTime > 0
-  shotTime--;
- else
- {
-  if shot <= shotCount
-  {
-   played = false;
-   instance_deactivate_all(true);
-   shot++; shotTime = shotLengthNext;
-  }
-  if shot > shotCount
-  {
-   played = false;
-   instance_deactivate_all(true);
-   shot = 1; shotTime = shotLengthNext;
-  } 
- }
+playShot();

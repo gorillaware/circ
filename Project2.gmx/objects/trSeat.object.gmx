@@ -50,12 +50,16 @@
             <kind>1</kind>
             <string>image_xscale = myScale;
 image_yscale = myScale;
- if sceneManager.moveTimer &lt;= 0
+ 
+if instance_exists(sceneManager)
+{
+  if sceneManager.moveTimer &lt;= 0
  {
   move_towards_point(0-room_width, room_height/3, 5);
   if (x &lt; room_width/4)
-   depth = trFront.myDepth+2;
+   depth = trFront.depth+2;
  }
+}
 </string>
           </argument>
         </arguments>

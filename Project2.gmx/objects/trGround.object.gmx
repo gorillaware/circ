@@ -36,7 +36,9 @@ startX = x;
 startY = y;
 frameCount = 15;
 framesLeft = frameCount;
+
 thump = false;
+
 thumpReset = false;
 
 
