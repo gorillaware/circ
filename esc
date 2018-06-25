@@ -1,0 +1,41 @@
+[33mcommit 1bb8c3a425c37e87101492c447bf9404ed90d40c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Luna <Roodypoo@cock.li>
+Date:   Tue Aug 29 18:02:22 2017 -0400
+
+    new super in the works, icons to choose between them, and addressed a massive game breaking shader bug that slipped under the radar up until now
+
+[33mcommit bdf4435df985a5fc6fbc7f3480c23f57e23f5e9f[m
+Author: Luna <Roodypoo@cock.li>
+Date:   Wed Jul 12 06:02:15 2017 -0400
+
+    added sounds, train assets, shot timer to visualization
+
+[33mcommit e5896b2faae49af88f52a705cd1b970c5ecbaf76[m
+Author: Roody Poo <MyAnus@cock.li>
+Date:   Wed Jun 14 15:07:45 2017 -0400
+
+    train stuff, I think
+
+[33mcommit bc8355598fa102d4811c5c3b0fb4c7be64bbd057[m
+Author: Roody Poo <MyAnus@cock.li>
+Date:   Sun Mar 26 17:53:47 2017 -0400
+
+    added visualization cutscene, which is mostly complete but still missing reality and some polish
+
+[33mcommit b569d12183e39ce7f046238144ef741988ae0d39[m
+Author: Roody Poo <MyAnus@cock.li>
+Date:   Sun Feb 12 15:58:39 2017 -0500
+
+    special attack now deals (double) damage and incorporates 2 new shader sets as well as zooming the room view. zgame visualizer background added, too.
+
+[33mcommit c1493cfca0fc9f563b0074f12d871fe89c57f4d6[m
+Author: Roody Poo <MyAnus@cock.li>
+Date:   Thu Jan 5 20:32:17 2017 -0500
+
+    fixed up stage navigation, added a special attack that currently does no damage.
+
+[33mcommit 733c5b5f18ac5da827c4801fb30d618ba378e2e9[m
+Author: Roody Poo <MyAnus@cock.li>
+Date:   Thu Dec 8 22:29:07 2016 -0500
+
+    new account now that things are getting kinda...NSFW. Granted I'm unemployed, but still.
